@@ -8,7 +8,7 @@
   
   
   
-  <title>Nand Gate - PyHDL</title>
+  <title>Xor Gate - PyHDL</title>
   
 
   <link rel="shortcut icon" href="../../img/favicon.ico">
@@ -23,9 +23,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Nand Gate";
-    var mkdocs_page_input_path = "builtins/nand.md";
-    var mkdocs_page_url = "/builtins/nand/";
+    var mkdocs_page_name = "Xor Gate";
+    var mkdocs_page_input_path = "builtins/xor.md";
+    var mkdocs_page_url = "/builtins/xor/";
   </script>
   
   <script src="../../js/jquery-2.1.1.min.js"></script>
@@ -81,19 +81,8 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Nand Gate</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#nand-gate">Nand gate</a></li>
-                
-                    <li><a class="toctree-l4" href="#truth-table">Truth table</a></li>
-                
-                    <li><a class="toctree-l4" href="#usage">Usage</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../nand/">Nand Gate</a>
         
     </li>
 
@@ -120,8 +109,19 @@
 
         
             
-    <li class="toctree-l1 ">
-        <a class="" href="../xor/">Xor Gate</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Xor Gate</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#xor-gate">Xor gate</a></li>
+                
+                    <li><a class="toctree-l4" href="#truth-table">Truth table</a></li>
+                
+                    <li><a class="toctree-l4" href="#usage">Usage</a></li>
+                
+            
+            </ul>
         
     </li>
 
@@ -169,7 +169,7 @@
         
       
     
-    <li>Nand Gate</li>
+    <li>Xor Gate</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -179,7 +179,7 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="nand-gate">Nand gate</h1>
+                <h1 id="xor-gate">Xor gate</h1>
 <h2 id="truth-table">Truth table</h2>
 <table>
 <thead>
@@ -193,7 +193,7 @@
 <tr>
 <td>0</td>
 <td>0</td>
-<td>1</td>
+<td>0</td>
 </tr>
 <tr>
 <td>1</td>
@@ -213,15 +213,15 @@
 </tbody>
 </table>
 <h2 id="usage">Usage</h2>
-<pre><code>&gt;&gt;&gt; from pyhdl.primitives import NandGate
+<pre><code>&gt;&gt;&gt; from pyhdl.primitives import XorGate
 &gt;&gt;&gt; a = Wire()
 &gt;&gt;&gt; b = Wire()
 &gt;&gt;&gt; out = Wire()
-&gt;&gt;&gt; gate = NandGate(a=a, b=b, out=out)
+&gt;&gt;&gt; gate = XorGate(a=a, b=b, out=out)
 &gt;&gt;&gt; a.val = '1'
 &gt;&gt;&gt; b.val = '1'
 &gt;&gt;&gt; out.val
-1
+0
 </code></pre>
               
             </div>
@@ -230,10 +230,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../and/" class="btn btn-neutral float-right" title="And Gate">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../not/" class="btn btn-neutral float-right" title="Not Gate">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../modules/" class="btn btn-neutral" title="Defining your own gates"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../or/" class="btn btn-neutral" title="Or Gate"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -259,10 +259,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../../modules/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../or/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../and/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../not/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

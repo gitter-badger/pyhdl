@@ -8,30 +8,30 @@
   
   
   
-  <title>Nand Gate - PyHDL</title>
+  <title>Defining your own gates - PyHDL</title>
   
 
-  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <link rel="shortcut icon" href="../img/favicon.ico">
 
   
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
-  <link rel="stylesheet" href="../../css/highlight.css">
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
 
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Nand Gate";
-    var mkdocs_page_input_path = "builtins/nand.md";
-    var mkdocs_page_url = "/builtins/nand/";
+    var mkdocs_page_name = "Defining your own gates";
+    var mkdocs_page_input_path = "modules.md";
+    var mkdocs_page_url = "/modules/";
   </script>
   
-  <script src="../../js/jquery-2.1.1.min.js"></script>
-  <script src="../../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
-  <script src="../../js/theme.js"></script> 
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
 
   
 </head>
@@ -43,9 +43,9 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
       <div class="wy-side-nav-search">
-        <a href="../.." class="icon icon-home"> PyHDL</a>
+        <a href=".." class="icon icon-home"> PyHDL</a>
         <div role="search">
-  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
   </form>
 </div>
@@ -56,21 +56,28 @@
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="../..">Introduction</a>
+        <a class="" href="..">Introduction</a>
         
     </li>
 <li>
           
             <li>
     <li class="toctree-l1 ">
-        <a class="" href="../../wire/">Wires</a>
+        <a class="" href="../wire/">Wires</a>
         
     </li>
 <li>
           
             <li>
-    <li class="toctree-l1 ">
-        <a class="" href="../../modules/">Defining your own gates</a>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Defining your own gates</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#defining-your-own-gates">Defining your own gates</a></li>
+                
+            
+            </ul>
         
     </li>
 <li>
@@ -81,61 +88,50 @@
 
         
             
-    <li class="toctree-l1 current">
-        <a class="current" href="./">Nand Gate</a>
-        
-            <ul>
-            
-                <li class="toctree-l3"><a href="#nand-gate">Nand gate</a></li>
-                
-                    <li><a class="toctree-l4" href="#truth-table">Truth table</a></li>
-                
-                    <li><a class="toctree-l4" href="#usage">Usage</a></li>
-                
-            
-            </ul>
+    <li class="toctree-l1 ">
+        <a class="" href="../builtins/nand/">Nand Gate</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../and/">And Gate</a>
+        <a class="" href="../builtins/and/">And Gate</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../nor/">Nor Gate</a>
+        <a class="" href="../builtins/nor/">Nor Gate</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../or/">Or Gate</a>
+        <a class="" href="../builtins/or/">Or Gate</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../xor/">Xor Gate</a>
+        <a class="" href="../builtins/xor/">Xor Gate</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../not/">Not Gate</a>
+        <a class="" href="../builtins/not/">Not Gate</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../dff/">D Flip Flop</a>
+        <a class="" href="../builtins/dff/">D Flip Flop</a>
         
     </li>
 
@@ -153,7 +149,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../..">PyHDL</a>
+        <a href="..">PyHDL</a>
       </nav>
 
       
@@ -161,15 +157,11 @@
         <div class="rst-content">
           <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="../..">Docs</a> &raquo;</li>
+    <li><a href="..">Docs</a> &raquo;</li>
     
       
-        
-          <li>Builtin Gates &raquo;</li>
-        
-      
     
-    <li>Nand Gate</li>
+    <li>Defining your own gates</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -179,49 +171,36 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="nand-gate">Nand gate</h1>
-<h2 id="truth-table">Truth table</h2>
-<table>
-<thead>
-<tr>
-<th>a</th>
-<th>b</th>
-<th>out</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-<h2 id="usage">Usage</h2>
-<pre><code>&gt;&gt;&gt; from pyhdl.primitives import NandGate
+                <h1 id="defining-your-own-gates">Defining your own gates</h1>
+<p>You can define your own gates using modules.</p>
+<pre><code class="python">&gt;&gt;&gt; from pyhdl.wire import Wire
+&gt;&gt;&gt; from pyhdl.declarative import Module
+&gt;&gt;&gt; from pyhdl.primitives import NandGate
+&gt;&gt;&gt; 
+&gt;&gt;&gt; # We are going to make a 3 input Nand Gate
+&gt;&gt;&gt; class NandGate3(Module):
+&gt;&gt;&gt;     a = Wire(type='input')
+&gt;&gt;&gt;     b = Wire(type='input')
+&gt;&gt;&gt;     c = Wire(type='input')
+&gt;&gt;&gt;     temp = Wire()
+&gt;&gt;&gt;     out = Wire(type='output')
+&gt;&gt;&gt;     nand1 = NandGate(a=a, b=b, out=temp)
+&gt;&gt;&gt;     nand2 = NandGate(a=temp, b=c, out=out)
+&gt;&gt;&gt; 
+&gt;&gt;&gt; # You can use it as a normal gate
 &gt;&gt;&gt; a = Wire()
 &gt;&gt;&gt; b = Wire()
+&gt;&gt;&gt; c = Wire()
 &gt;&gt;&gt; out = Wire()
-&gt;&gt;&gt; gate = NandGate(a=a, b=b, out=out)
+&gt;&gt;&gt; gate = NandGate3(a=a, b=b, c=c, out=out)
 &gt;&gt;&gt; a.val = '1'
 &gt;&gt;&gt; b.val = '1'
+&gt;&gt;&gt; c.val = '1'
 &gt;&gt;&gt; out.val
-1
+'0'
+&gt;&gt;&gt; c.val = '0'
+&gt;&gt;&gt; out.val
+'1'
 </code></pre>
               
             </div>
@@ -230,10 +209,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../and/" class="btn btn-neutral float-right" title="And Gate">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../builtins/nand/" class="btn btn-neutral float-right" title="Nand Gate">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../../modules/" class="btn btn-neutral" title="Defining your own gates"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../wire/" class="btn btn-neutral" title="Wires"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -259,10 +238,10 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../../modules/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../wire/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../and/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../builtins/nand/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

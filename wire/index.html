@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Wires - PyHDL</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Wires";
+    var mkdocs_page_input_path = "wire.md";
+    var mkdocs_page_url = "/wire/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> PyHDL</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Introduction</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Wires</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#wire">Wire</a></li>
+                
+                    <li><a class="toctree-l4" href="#usage">Usage</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#subwires">Subwires</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../modules/">Defining your own gates</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>Builtin Gates</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../builtins/nand/">Nand Gate</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../builtins/and/">And Gate</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../builtins/nor/">Nor Gate</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../builtins/or/">Or Gate</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../builtins/xor/">Xor Gate</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../builtins/not/">Not Gate</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../builtins/dff/">D Flip Flop</a>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">PyHDL</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Wires</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="wire">Wire</h1>
+<p>Wires are just circuit wires.</p>
+<p>They have a fixed width and a type.</p>
+<p>The type determines whether the wire is an output, an input or something else.</p>
+<h2 id="usage">Usage</h2>
+<pre><code class="python">&gt;&gt;&gt; from pyhdl.wire import Wire
+&gt;&gt;&gt; a = Wire(width=3,       # This determines the width of the wire in bits
+&gt;&gt;&gt;          type=&quot;input&quot;)  # This tells that the wire is an input. 
+&gt;&gt;&gt;                         # It could also be an output or a internal wire.
+&gt;&gt;&gt; a.val # This gets the value of the wire
+'xxx'
+&gt;&gt;&gt; a.val = '101' # This sets the value of the wire
+&gt;&gt;&gt; a.val
+'101'
+&gt;&gt;&gt; a.val = '12a' # If you try to set an invalid value,
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;pyhdl/wire.py&quot;, line 31, in val
+    raise HDLError(&quot;Invalid value passed to wire: {0}&quot;.format(value))
+pyhdl.utils.HDLError: Invalid value passed to wire: 121
+&gt;&gt;&gt; # You get an error
+</code></pre>
+
+<h1 id="subwires">Subwires</h1>
+<p>Sometimes, you need to take a subset of the wire. For example, you may only be interested in the second bit of the wire shown above.</p>
+<p>You can use a subwire to do this.</p>
+<pre><code class="python">&gt;&gt;&gt; b = a[2:3] # Take a subset of the wire a, from bits 2 to 3
+&gt;&gt;&gt; a.val = &quot;111&quot;
+&gt;&gt;&gt; b.val
+1
+&gt;&gt;&gt; a.val = &quot;101&quot;
+&gt;&gt;&gt; b.val
+0
+</code></pre>
+
+<p><strong>But do note, you can only take a subset of a wire once.</strong></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../modules/" class="btn btn-neutral float-right" title="Defining your own gates">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../modules/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

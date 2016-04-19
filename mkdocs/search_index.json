@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Welcome to PyHDL\n\n\nPyHDL is a simple python based Hardware Description Language.\n\n\nExamples\n\n\nfrom pyhdl.declarative import Module\nfrom pyhdl.wire import Wire\nfrom pyhdl.primitives import NandGate\n\n\nclass NotGate(Module):\n    a = Wire(type=\ninput\n)\n    out = Wire(type=\noutput\n)\n    gate1 = NandGate(a, a, out)\n\n\nclass OrGate(Module):\n    a = Wire(type=\ninput\n)\n    b = Wire(type=\ninput\n)\n    temp1 = Wire(type=\ninternal\n)\n    temp2 = Wire(type=\ninternal\n)\n    out = Wire(type=\noutput\n)\n    gate1 = NandGate(a, a, temp1)\n    gate2 = NandGate(b, b, temp2)\n    gate3 = NandGate(temp1, temp2, out)\n\n\nclass XorGate(Module):\n    a = Wire(type=\ninput\n)\n    b = Wire(type=\ninput\n)\n    temp1 = Wire(type=\ninternal\n)\n    temp2 = Wire(type=\ninternal\n)\n    temp3 = Wire(type=\ninternal\n)\n    out = Wire(type=\noutput\n)\n    gate1 = NandGate(a, b, temp1)\n    gate2 = NandGate(a, temp1, temp2)\n    gate3 = NandGate(temp1, b, temp3)\n    gate4 = NandGate(temp2, temp3, out)\n\n\nclass AndGate(Module):\n    a = Wire(type=\ninput\n)\n    b = Wire(type=\ninput\n)\n    temp = Wire(type=\ninternal\n)\n    out = Wire(type=\noutput\n)\n    gate1 = NandGate(a, b, temp)\n    gate2 = NotGate(a=temp, out=out)", 
+            "text": "Welcome to PyHDL\n\n\nPyHDL is a simple python based Hardware Description Language.", 
             "title": "Introduction"
         }, 
         {
@@ -11,14 +11,39 @@
             "title": "Welcome to PyHDL"
         }, 
         {
-            "location": "/#examples", 
-            "text": "from pyhdl.declarative import Module\nfrom pyhdl.wire import Wire\nfrom pyhdl.primitives import NandGate\n\n\nclass NotGate(Module):\n    a = Wire(type= input )\n    out = Wire(type= output )\n    gate1 = NandGate(a, a, out)\n\n\nclass OrGate(Module):\n    a = Wire(type= input )\n    b = Wire(type= input )\n    temp1 = Wire(type= internal )\n    temp2 = Wire(type= internal )\n    out = Wire(type= output )\n    gate1 = NandGate(a, a, temp1)\n    gate2 = NandGate(b, b, temp2)\n    gate3 = NandGate(temp1, temp2, out)\n\n\nclass XorGate(Module):\n    a = Wire(type= input )\n    b = Wire(type= input )\n    temp1 = Wire(type= internal )\n    temp2 = Wire(type= internal )\n    temp3 = Wire(type= internal )\n    out = Wire(type= output )\n    gate1 = NandGate(a, b, temp1)\n    gate2 = NandGate(a, temp1, temp2)\n    gate3 = NandGate(temp1, b, temp3)\n    gate4 = NandGate(temp2, temp3, out)\n\n\nclass AndGate(Module):\n    a = Wire(type= input )\n    b = Wire(type= input )\n    temp = Wire(type= internal )\n    out = Wire(type= output )\n    gate1 = NandGate(a, b, temp)\n    gate2 = NotGate(a=temp, out=out)", 
-            "title": "Examples"
+            "location": "/wire/", 
+            "text": "Wire\n\n\nWires are just circuit wires.\n\n\nThey have a fixed width and a type.\n\n\nThe type determines whether the wire is an output, an input or something else.\n\n\nUsage\n\n\n from pyhdl.wire import Wire\n\n a = Wire(width=3,       # This determines the width of the wire in bits\n\n          type=\ninput\n)  # This tells that the wire is an input. \n\n                         # It could also be an output or a internal wire.\n\n a.val # This gets the value of the wire\n'xxx'\n\n a.val = '101' # This sets the value of the wire\n\n a.val\n'101'\n\n a.val = '12a' # If you try to set an invalid value,\nTraceback (most recent call last):\n  File \nstdin\n, line 1, in \nmodule\n\n  File \npyhdl/wire.py\n, line 31, in val\n    raise HDLError(\nInvalid value passed to wire: {0}\n.format(value))\npyhdl.utils.HDLError: Invalid value passed to wire: 121\n\n # You get an error\n\n\n\n\nSubwires\n\n\nSometimes, you need to take a subset of the wire. For example, you may only be interested in the second bit of the wire shown above.\n\n\nYou can use a subwire to do this.\n\n\n b = a[2:3] # Take a subset of the wire a, from bits 2 to 3\n\n a.val = \n111\n\n\n b.val\n1\n\n a.val = \n101\n\n\n b.val\n0\n\n\n\n\nBut do note, you can only take a subset of a wire once.", 
+            "title": "Wires"
+        }, 
+        {
+            "location": "/wire/#wire", 
+            "text": "Wires are just circuit wires.  They have a fixed width and a type.  The type determines whether the wire is an output, an input or something else.", 
+            "title": "Wire"
+        }, 
+        {
+            "location": "/wire/#usage", 
+            "text": "from pyhdl.wire import Wire  a = Wire(width=3,       # This determines the width of the wire in bits           type= input )  # This tells that the wire is an input.                           # It could also be an output or a internal wire.  a.val # This gets the value of the wire\n'xxx'  a.val = '101' # This sets the value of the wire  a.val\n'101'  a.val = '12a' # If you try to set an invalid value,\nTraceback (most recent call last):\n  File  stdin , line 1, in  module \n  File  pyhdl/wire.py , line 31, in val\n    raise HDLError( Invalid value passed to wire: {0} .format(value))\npyhdl.utils.HDLError: Invalid value passed to wire: 121  # You get an error", 
+            "title": "Usage"
+        }, 
+        {
+            "location": "/wire/#subwires", 
+            "text": "Sometimes, you need to take a subset of the wire. For example, you may only be interested in the second bit of the wire shown above.  You can use a subwire to do this.   b = a[2:3] # Take a subset of the wire a, from bits 2 to 3  a.val =  111   b.val\n1  a.val =  101   b.val\n0  But do note, you can only take a subset of a wire once.", 
+            "title": "Subwires"
+        }, 
+        {
+            "location": "/modules/", 
+            "text": "Defining your own gates\n\n\nYou can define your own gates using modules.\n\n\n from pyhdl.wire import Wire\n\n from pyhdl.declarative import Module\n\n from pyhdl.primitives import NandGate\n\n \n\n # We are going to make a 3 input Nand Gate\n\n class NandGate3(Module):\n\n     a = Wire(type='input')\n\n     b = Wire(type='input')\n\n     c = Wire(type='input')\n\n     temp = Wire()\n\n     out = Wire(type='output')\n\n     nand1 = NandGate(a=a, b=b, out=temp)\n\n     nand2 = NandGate(a=temp, b=c, out=out)\n\n \n\n # You can use it as a normal gate\n\n a = Wire()\n\n b = Wire()\n\n c = Wire()\n\n out = Wire()\n\n gate = NandGate3(a=a, b=b, c=c, out=out)\n\n a.val = '1'\n\n b.val = '1'\n\n c.val = '1'\n\n out.val\n'0'\n\n c.val = '0'\n\n out.val\n'1'", 
+            "title": "Defining your own gates"
+        }, 
+        {
+            "location": "/modules/#defining-your-own-gates", 
+            "text": "You can define your own gates using modules.   from pyhdl.wire import Wire  from pyhdl.declarative import Module  from pyhdl.primitives import NandGate    # We are going to make a 3 input Nand Gate  class NandGate3(Module):      a = Wire(type='input')      b = Wire(type='input')      c = Wire(type='input')      temp = Wire()      out = Wire(type='output')      nand1 = NandGate(a=a, b=b, out=temp)      nand2 = NandGate(a=temp, b=c, out=out)    # You can use it as a normal gate  a = Wire()  b = Wire()  c = Wire()  out = Wire()  gate = NandGate3(a=a, b=b, c=c, out=out)  a.val = '1'  b.val = '1'  c.val = '1'  out.val\n'0'  c.val = '0'  out.val\n'1'", 
+            "title": "Defining your own gates"
         }, 
         {
             "location": "/builtins/nand/", 
-            "text": "Nand gate\n\n\nTruth table\n\n\n\n\n\n\n\n\na\n\n\nb\n\n\nout\n\n\n\n\n\n\n\n\n\n\n0\n\n\n0\n\n\n1\n\n\n\n\n\n\n1\n\n\n0\n\n\n0\n\n\n\n\n\n\n0\n\n\n1\n\n\n0\n\n\n\n\n\n\n1\n\n\n1\n\n\n0\n\n\n\n\n\n\n\n\nUsage\n\n\n from pyhdl.primitives import NandGate\n\n a = Wire()\n\n b = Wire()\n\n out = Wire()\n\n gate = NandGate(a=a, b=b, out=out)\n\n a.set('1')\n\n b.set('1')\n\n a.get()\n1", 
-            "title": "NAND Gate"
+            "text": "Nand gate\n\n\nTruth table\n\n\n\n\n\n\n\n\na\n\n\nb\n\n\nout\n\n\n\n\n\n\n\n\n\n\n0\n\n\n0\n\n\n1\n\n\n\n\n\n\n1\n\n\n0\n\n\n1\n\n\n\n\n\n\n0\n\n\n1\n\n\n1\n\n\n\n\n\n\n1\n\n\n1\n\n\n0\n\n\n\n\n\n\n\n\nUsage\n\n\n from pyhdl.primitives import NandGate\n\n a = Wire()\n\n b = Wire()\n\n out = Wire()\n\n gate = NandGate(a=a, b=b, out=out)\n\n a.val = '1'\n\n b.val = '1'\n\n out.val\n1", 
+            "title": "Nand Gate"
         }, 
         {
             "location": "/builtins/nand/#nand-gate", 
@@ -27,18 +52,18 @@
         }, 
         {
             "location": "/builtins/nand/#truth-table", 
-            "text": "a  b  out      0  0  1    1  0  0    0  1  0    1  1  0", 
+            "text": "a  b  out      0  0  1    1  0  1    0  1  1    1  1  0", 
             "title": "Truth table"
         }, 
         {
             "location": "/builtins/nand/#usage", 
-            "text": "from pyhdl.primitives import NandGate  a = Wire()  b = Wire()  out = Wire()  gate = NandGate(a=a, b=b, out=out)  a.set('1')  b.set('1')  a.get()\n1", 
+            "text": "from pyhdl.primitives import NandGate  a = Wire()  b = Wire()  out = Wire()  gate = NandGate(a=a, b=b, out=out)  a.val = '1'  b.val = '1'  out.val\n1", 
             "title": "Usage"
         }, 
         {
             "location": "/builtins/and/", 
-            "text": "And gate\n\n\nTruth table\n\n\n\n\n\n\n\n\na\n\n\nb\n\n\nout\n\n\n\n\n\n\n\n\n\n\n0\n\n\n0\n\n\n1\n\n\n\n\n\n\n1\n\n\n0\n\n\n0\n\n\n\n\n\n\n0\n\n\n1\n\n\n0\n\n\n\n\n\n\n1\n\n\n1\n\n\n0\n\n\n\n\n\n\n\n\nUsage\n\n\n from pyhdl.primitives import NandGate\n\n a = Wire()\n\n b = Wire()\n\n out = Wire()\n\n gate = NandGate(a=a, b=b, out=out)\n\n a.set('1')\n\n b.set('1')\n\n a.get()\n1", 
-            "title": "AND Gate"
+            "text": "And gate\n\n\nTruth table\n\n\n\n\n\n\n\n\na\n\n\nb\n\n\nout\n\n\n\n\n\n\n\n\n\n\n0\n\n\n0\n\n\n1\n\n\n\n\n\n\n1\n\n\n0\n\n\n0\n\n\n\n\n\n\n0\n\n\n1\n\n\n0\n\n\n\n\n\n\n1\n\n\n1\n\n\n0\n\n\n\n\n\n\n\n\nUsage\n\n\n from pyhdl.primitives import NandGate\n\n a = Wire()\n\n b = Wire()\n\n out = Wire()\n\n gate = NandGate(a=a, b=b, out=out)\n\n a.val = '1'\n\n b.val = '1'\n\n out.val\n1", 
+            "title": "And Gate"
         }, 
         {
             "location": "/builtins/and/#and-gate", 
@@ -52,28 +77,103 @@
         }, 
         {
             "location": "/builtins/and/#usage", 
-            "text": "from pyhdl.primitives import NandGate  a = Wire()  b = Wire()  out = Wire()  gate = NandGate(a=a, b=b, out=out)  a.set('1')  b.set('1')  a.get()\n1", 
+            "text": "from pyhdl.primitives import NandGate  a = Wire()  b = Wire()  out = Wire()  gate = NandGate(a=a, b=b, out=out)  a.val = '1'  b.val = '1'  out.val\n1", 
             "title": "Usage"
         }, 
         {
-            "location": "/builtins/dff/", 
-            "text": "Nand gate\n\n\nTruth table\n\n\n\n\n\n\n\n\na\n\n\nb\n\n\nout\n\n\n\n\n\n\n\n\n\n\n0\n\n\n0\n\n\n1\n\n\n\n\n\n\n1\n\n\n0\n\n\n0\n\n\n\n\n\n\n0\n\n\n1\n\n\n0\n\n\n\n\n\n\n1\n\n\n1\n\n\n0\n\n\n\n\n\n\n\n\nUsage\n\n\n from pyhdl.primitives import NandGate\n\n a = Wire()\n\n b = Wire()\n\n out = Wire()\n\n gate = NandGate(a=a, b=b, out=out)\n\n a.set('1')\n\n b.set('1')\n\n a.get()\n1", 
-            "title": "D Flip Flop"
+            "location": "/builtins/nor/", 
+            "text": "Nor gate\n\n\nTruth table\n\n\n\n\n\n\n\n\na\n\n\nb\n\n\nout\n\n\n\n\n\n\n\n\n\n\n0\n\n\n0\n\n\n1\n\n\n\n\n\n\n1\n\n\n0\n\n\n0\n\n\n\n\n\n\n0\n\n\n1\n\n\n0\n\n\n\n\n\n\n1\n\n\n1\n\n\n0\n\n\n\n\n\n\n\n\nUsage\n\n\n from pyhdl.primitives import Norgate\n\n a = Wire()\n\n b = Wire()\n\n out = Wire()\n\n gate = Norgate(a=a, b=b, out=out)\n\n a.val = '1'\n\n b.val = '1'\n\n out.val\n0", 
+            "title": "Nor Gate"
         }, 
         {
-            "location": "/builtins/dff/#nand-gate", 
+            "location": "/builtins/nor/#nor-gate", 
             "text": "", 
-            "title": "Nand gate"
+            "title": "Nor gate"
         }, 
         {
-            "location": "/builtins/dff/#truth-table", 
+            "location": "/builtins/nor/#truth-table", 
             "text": "a  b  out      0  0  1    1  0  0    0  1  0    1  1  0", 
             "title": "Truth table"
         }, 
         {
-            "location": "/builtins/dff/#usage", 
-            "text": "from pyhdl.primitives import NandGate  a = Wire()  b = Wire()  out = Wire()  gate = NandGate(a=a, b=b, out=out)  a.set('1')  b.set('1')  a.get()\n1", 
+            "location": "/builtins/nor/#usage", 
+            "text": "from pyhdl.primitives import Norgate  a = Wire()  b = Wire()  out = Wire()  gate = Norgate(a=a, b=b, out=out)  a.val = '1'  b.val = '1'  out.val\n0", 
             "title": "Usage"
+        }, 
+        {
+            "location": "/builtins/or/", 
+            "text": "Or gate\n\n\nTruth table\n\n\n\n\n\n\n\n\na\n\n\nb\n\n\nout\n\n\n\n\n\n\n\n\n\n\n0\n\n\n0\n\n\n0\n\n\n\n\n\n\n1\n\n\n0\n\n\n1\n\n\n\n\n\n\n0\n\n\n1\n\n\n1\n\n\n\n\n\n\n1\n\n\n1\n\n\n1\n\n\n\n\n\n\n\n\nUsage\n\n\n from pyhdl.primitives import OrGate\n\n a = Wire()\n\n b = Wire()\n\n out = Wire()\n\n gate = OrGate(a=a, b=b, out=out)\n\n a.val = '1'\n\n b.val = '1'\n\n out.val\n1", 
+            "title": "Or Gate"
+        }, 
+        {
+            "location": "/builtins/or/#or-gate", 
+            "text": "", 
+            "title": "Or gate"
+        }, 
+        {
+            "location": "/builtins/or/#truth-table", 
+            "text": "a  b  out      0  0  0    1  0  1    0  1  1    1  1  1", 
+            "title": "Truth table"
+        }, 
+        {
+            "location": "/builtins/or/#usage", 
+            "text": "from pyhdl.primitives import OrGate  a = Wire()  b = Wire()  out = Wire()  gate = OrGate(a=a, b=b, out=out)  a.val = '1'  b.val = '1'  out.val\n1", 
+            "title": "Usage"
+        }, 
+        {
+            "location": "/builtins/xor/", 
+            "text": "Xor gate\n\n\nTruth table\n\n\n\n\n\n\n\n\na\n\n\nb\n\n\nout\n\n\n\n\n\n\n\n\n\n\n0\n\n\n0\n\n\n0\n\n\n\n\n\n\n1\n\n\n0\n\n\n1\n\n\n\n\n\n\n0\n\n\n1\n\n\n1\n\n\n\n\n\n\n1\n\n\n1\n\n\n0\n\n\n\n\n\n\n\n\nUsage\n\n\n from pyhdl.primitives import XorGate\n\n a = Wire()\n\n b = Wire()\n\n out = Wire()\n\n gate = XorGate(a=a, b=b, out=out)\n\n a.val = '1'\n\n b.val = '1'\n\n out.val\n0", 
+            "title": "Xor Gate"
+        }, 
+        {
+            "location": "/builtins/xor/#xor-gate", 
+            "text": "", 
+            "title": "Xor gate"
+        }, 
+        {
+            "location": "/builtins/xor/#truth-table", 
+            "text": "a  b  out      0  0  0    1  0  1    0  1  1    1  1  0", 
+            "title": "Truth table"
+        }, 
+        {
+            "location": "/builtins/xor/#usage", 
+            "text": "from pyhdl.primitives import XorGate  a = Wire()  b = Wire()  out = Wire()  gate = XorGate(a=a, b=b, out=out)  a.val = '1'  b.val = '1'  out.val\n0", 
+            "title": "Usage"
+        }, 
+        {
+            "location": "/builtins/not/", 
+            "text": "Not gate\n\n\nTruth table\n\n\n\n\n\n\n\n\na\n\n\nout\n\n\n\n\n\n\n\n\n\n\n0\n\n\n1\n\n\n\n\n\n\n1\n\n\n0\n\n\n\n\n\n\n\n\nUsage\n\n\n from pyhdl.primitives import NotGate\n\n a = Wire()\n\n out = Wire()\n\n gate = NotGate(a=a, out=out)\n\n a.val = '1'\n\n out.val\n0", 
+            "title": "Not Gate"
+        }, 
+        {
+            "location": "/builtins/not/#not-gate", 
+            "text": "", 
+            "title": "Not gate"
+        }, 
+        {
+            "location": "/builtins/not/#truth-table", 
+            "text": "a  out      0  1    1  0", 
+            "title": "Truth table"
+        }, 
+        {
+            "location": "/builtins/not/#usage", 
+            "text": "from pyhdl.primitives import NotGate  a = Wire()  out = Wire()  gate = NotGate(a=a, out=out)  a.val = '1'  out.val\n0", 
+            "title": "Usage"
+        }, 
+        {
+            "location": "/builtins/dff/", 
+            "text": "D flip flop\n\n\nA D flip flop samples it's inputs on every tick, and sets it's outputs on every tock.\n\n\nExample\n\n\n from pyhdl.primitives import DFF\n\n input = Wire()\n\n output = Wire()\n\n flipflop = DFF(input=input, output=output)\n\n input.set('1')\n\n flipflop.tick()\n\n output.val\n'x'\n\n input.val = '0'\n\n flipflop.tock()\n\n output.val\n'1'", 
+            "title": "D Flip Flop"
+        }, 
+        {
+            "location": "/builtins/dff/#d-flip-flop", 
+            "text": "A D flip flop samples it's inputs on every tick, and sets it's outputs on every tock.", 
+            "title": "D flip flop"
+        }, 
+        {
+            "location": "/builtins/dff/#example", 
+            "text": "from pyhdl.primitives import DFF  input = Wire()  output = Wire()  flipflop = DFF(input=input, output=output)  input.set('1')  flipflop.tick()  output.val\n'x'  input.val = '0'  flipflop.tock()  output.val\n'1'", 
+            "title": "Example"
         }
     ]
 }

@@ -62,10 +62,22 @@
             
                 <li class="toctree-l3"><a href="#welcome-to-pyhdl">Welcome to PyHDL</a></li>
                 
-                    <li><a class="toctree-l4" href="#examples">Examples</a></li>
-                
             
             </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="wire/">Wires</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="modules/">Defining your own gates</a>
         
     </li>
 <li>
@@ -77,14 +89,42 @@
         
             
     <li class="toctree-l1 ">
-        <a class="" href="builtins/nand/">NAND Gate</a>
+        <a class="" href="builtins/nand/">Nand Gate</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="builtins/and/">AND Gate</a>
+        <a class="" href="builtins/and/">And Gate</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="builtins/nor/">Nor Gate</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="builtins/or/">Or Gate</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="builtins/xor/">Xor Gate</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="builtins/not/">Not Gate</a>
         
     </li>
 
@@ -133,50 +173,6 @@
               
                 <h1 id="welcome-to-pyhdl">Welcome to PyHDL</h1>
 <p>PyHDL is a simple python based Hardware Description Language.</p>
-<h2 id="examples">Examples</h2>
-<pre><code class="python">from pyhdl.declarative import Module
-from pyhdl.wire import Wire
-from pyhdl.primitives import NandGate
-
-
-class NotGate(Module):
-    a = Wire(type=&quot;input&quot;)
-    out = Wire(type=&quot;output&quot;)
-    gate1 = NandGate(a, a, out)
-
-
-class OrGate(Module):
-    a = Wire(type=&quot;input&quot;)
-    b = Wire(type=&quot;input&quot;)
-    temp1 = Wire(type=&quot;internal&quot;)
-    temp2 = Wire(type=&quot;internal&quot;)
-    out = Wire(type=&quot;output&quot;)
-    gate1 = NandGate(a, a, temp1)
-    gate2 = NandGate(b, b, temp2)
-    gate3 = NandGate(temp1, temp2, out)
-
-
-class XorGate(Module):
-    a = Wire(type=&quot;input&quot;)
-    b = Wire(type=&quot;input&quot;)
-    temp1 = Wire(type=&quot;internal&quot;)
-    temp2 = Wire(type=&quot;internal&quot;)
-    temp3 = Wire(type=&quot;internal&quot;)
-    out = Wire(type=&quot;output&quot;)
-    gate1 = NandGate(a, b, temp1)
-    gate2 = NandGate(a, temp1, temp2)
-    gate3 = NandGate(temp1, b, temp3)
-    gate4 = NandGate(temp2, temp3, out)
-
-
-class AndGate(Module):
-    a = Wire(type=&quot;input&quot;)
-    b = Wire(type=&quot;input&quot;)
-    temp = Wire(type=&quot;internal&quot;)
-    out = Wire(type=&quot;output&quot;)
-    gate1 = NandGate(a, b, temp)
-    gate2 = NotGate(a=temp, out=out)
-</code></pre>
               
             </div>
           </div>
@@ -184,7 +180,7 @@ class AndGate(Module):
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="builtins/nand/" class="btn btn-neutral float-right" title="NAND Gate">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="wire/" class="btn btn-neutral float-right" title="Wires">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
     </div>
@@ -212,7 +208,7 @@ class AndGate(Module):
       
       
       
-        <span style="margin-left: 15px"><a href="builtins/nand/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="wire/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
@@ -222,5 +218,5 @@ class AndGate(Module):
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2016-04-19 06:22:36.120833
+Build Date UTC : 2016-04-19 06:55:32.259670
 -->

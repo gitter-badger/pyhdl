@@ -10,6 +10,22 @@
     
 
     
+    <url>
+     <loc>None/wire/</loc>
+     <lastmod>2016-04-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/modules/</loc>
+     <lastmod>2016-04-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
         
     <url>
      <loc>None/builtins/nand/</loc>
@@ -19,6 +35,30 @@
         
     <url>
      <loc>None/builtins/and/</loc>
+     <lastmod>2016-04-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/builtins/nor/</loc>
+     <lastmod>2016-04-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/builtins/or/</loc>
+     <lastmod>2016-04-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/builtins/xor/</loc>
+     <lastmod>2016-04-19</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
+     <loc>None/builtins/not/</loc>
      <lastmod>2016-04-19</lastmod>
      <changefreq>daily</changefreq>
     </url>

@@ -62,20 +62,62 @@
 <li>
           
             <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../wire/">Wires</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../../modules/">Defining your own gates</a>
+        
+    </li>
+<li>
+          
+            <li>
     <ul class="subnav">
     <li><span>Builtin Gates</span></li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../nand/">NAND Gate</a>
+        <a class="" href="../nand/">Nand Gate</a>
         
     </li>
 
         
             
     <li class="toctree-l1 ">
-        <a class="" href="../and/">AND Gate</a>
+        <a class="" href="../and/">And Gate</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../nor/">Nor Gate</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../or/">Or Gate</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../xor/">Xor Gate</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../not/">Not Gate</a>
         
     </li>
 
@@ -86,11 +128,9 @@
         
             <ul>
             
-                <li class="toctree-l3"><a href="#nand-gate">Nand gate</a></li>
+                <li class="toctree-l3"><a href="#d-flip-flop">D flip flop</a></li>
                 
-                    <li><a class="toctree-l4" href="#truth-table">Truth table</a></li>
-                
-                    <li><a class="toctree-l4" href="#usage">Usage</a></li>
+                    <li><a class="toctree-l4" href="#example">Example</a></li>
                 
             
             </ul>
@@ -137,49 +177,21 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="nand-gate">Nand gate</h1>
-<h2 id="truth-table">Truth table</h2>
-<table>
-<thead>
-<tr>
-<th>a</th>
-<th>b</th>
-<th>out</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>0</td>
-<td>1</td>
-</tr>
-<tr>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-<h2 id="usage">Usage</h2>
-<pre><code>&gt;&gt;&gt; from pyhdl.primitives import NandGate
-&gt;&gt;&gt; a = Wire()
-&gt;&gt;&gt; b = Wire()
-&gt;&gt;&gt; out = Wire()
-&gt;&gt;&gt; gate = NandGate(a=a, b=b, out=out)
-&gt;&gt;&gt; a.set('1')
-&gt;&gt;&gt; b.set('1')
-&gt;&gt;&gt; a.get()
-1
+                <h1 id="d-flip-flop">D flip flop</h1>
+<p>A D flip flop samples it's inputs on every tick, and sets it's outputs on every tock.</p>
+<h2 id="example">Example</h2>
+<pre><code>&gt;&gt;&gt; from pyhdl.primitives import DFF
+&gt;&gt;&gt; input = Wire()
+&gt;&gt;&gt; output = Wire()
+&gt;&gt;&gt; flipflop = DFF(input=input, output=output)
+&gt;&gt;&gt; input.set('1')
+&gt;&gt;&gt; flipflop.tick()
+&gt;&gt;&gt; output.val
+'x'
+&gt;&gt;&gt; input.val = '0'
+&gt;&gt;&gt; flipflop.tock()
+&gt;&gt;&gt; output.val
+'1'
 </code></pre>
               
             </div>
@@ -189,7 +201,7 @@
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="../and/" class="btn btn-neutral" title="AND Gate"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../not/" class="btn btn-neutral" title="Not Gate"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -215,7 +227,7 @@
     <span class="rst-current-version" data-toggle="rst-current-version">
       
       
-        <span><a href="../and/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../not/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>
