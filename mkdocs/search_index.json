@@ -1,0 +1,79 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "Welcome to PyHDL\n\n\nPyHDL is a simple python based Hardware Description Language.\n\n\nExamples\n\n\nfrom pyhdl.declarative import Module\nfrom pyhdl.wire import Wire\nfrom pyhdl.primitives import NandGate\n\n\nclass NotGate(Module):\n    a = Wire(type=\ninput\n)\n    out = Wire(type=\noutput\n)\n    gate1 = NandGate(a, a, out)\n\n\nclass OrGate(Module):\n    a = Wire(type=\ninput\n)\n    b = Wire(type=\ninput\n)\n    temp1 = Wire(type=\ninternal\n)\n    temp2 = Wire(type=\ninternal\n)\n    out = Wire(type=\noutput\n)\n    gate1 = NandGate(a, a, temp1)\n    gate2 = NandGate(b, b, temp2)\n    gate3 = NandGate(temp1, temp2, out)\n\n\nclass XorGate(Module):\n    a = Wire(type=\ninput\n)\n    b = Wire(type=\ninput\n)\n    temp1 = Wire(type=\ninternal\n)\n    temp2 = Wire(type=\ninternal\n)\n    temp3 = Wire(type=\ninternal\n)\n    out = Wire(type=\noutput\n)\n    gate1 = NandGate(a, b, temp1)\n    gate2 = NandGate(a, temp1, temp2)\n    gate3 = NandGate(temp1, b, temp3)\n    gate4 = NandGate(temp2, temp3, out)\n\n\nclass AndGate(Module):\n    a = Wire(type=\ninput\n)\n    b = Wire(type=\ninput\n)\n    temp = Wire(type=\ninternal\n)\n    out = Wire(type=\noutput\n)\n    gate1 = NandGate(a, b, temp)\n    gate2 = NotGate(a=temp, out=out)", 
+            "title": "Introduction"
+        }, 
+        {
+            "location": "/#welcome-to-pyhdl", 
+            "text": "PyHDL is a simple python based Hardware Description Language.", 
+            "title": "Welcome to PyHDL"
+        }, 
+        {
+            "location": "/#examples", 
+            "text": "from pyhdl.declarative import Module\nfrom pyhdl.wire import Wire\nfrom pyhdl.primitives import NandGate\n\n\nclass NotGate(Module):\n    a = Wire(type= input )\n    out = Wire(type= output )\n    gate1 = NandGate(a, a, out)\n\n\nclass OrGate(Module):\n    a = Wire(type= input )\n    b = Wire(type= input )\n    temp1 = Wire(type= internal )\n    temp2 = Wire(type= internal )\n    out = Wire(type= output )\n    gate1 = NandGate(a, a, temp1)\n    gate2 = NandGate(b, b, temp2)\n    gate3 = NandGate(temp1, temp2, out)\n\n\nclass XorGate(Module):\n    a = Wire(type= input )\n    b = Wire(type= input )\n    temp1 = Wire(type= internal )\n    temp2 = Wire(type= internal )\n    temp3 = Wire(type= internal )\n    out = Wire(type= output )\n    gate1 = NandGate(a, b, temp1)\n    gate2 = NandGate(a, temp1, temp2)\n    gate3 = NandGate(temp1, b, temp3)\n    gate4 = NandGate(temp2, temp3, out)\n\n\nclass AndGate(Module):\n    a = Wire(type= input )\n    b = Wire(type= input )\n    temp = Wire(type= internal )\n    out = Wire(type= output )\n    gate1 = NandGate(a, b, temp)\n    gate2 = NotGate(a=temp, out=out)", 
+            "title": "Examples"
+        }, 
+        {
+            "location": "/builtins/nand/", 
+            "text": "Nand gate\n\n\nTruth table\n\n\n\n\n\n\n\n\na\n\n\nb\n\n\nout\n\n\n\n\n\n\n\n\n\n\n0\n\n\n0\n\n\n1\n\n\n\n\n\n\n1\n\n\n0\n\n\n0\n\n\n\n\n\n\n0\n\n\n1\n\n\n0\n\n\n\n\n\n\n1\n\n\n1\n\n\n0\n\n\n\n\n\n\n\n\nUsage\n\n\n from pyhdl.primitives import NandGate\n\n a = Wire()\n\n b = Wire()\n\n out = Wire()\n\n gate = NandGate(a=a, b=b, out=out)\n\n a.set('1')\n\n b.set('1')\n\n a.get()\n1", 
+            "title": "NAND Gate"
+        }, 
+        {
+            "location": "/builtins/nand/#nand-gate", 
+            "text": "", 
+            "title": "Nand gate"
+        }, 
+        {
+            "location": "/builtins/nand/#truth-table", 
+            "text": "a  b  out      0  0  1    1  0  0    0  1  0    1  1  0", 
+            "title": "Truth table"
+        }, 
+        {
+            "location": "/builtins/nand/#usage", 
+            "text": "from pyhdl.primitives import NandGate  a = Wire()  b = Wire()  out = Wire()  gate = NandGate(a=a, b=b, out=out)  a.set('1')  b.set('1')  a.get()\n1", 
+            "title": "Usage"
+        }, 
+        {
+            "location": "/builtins/and/", 
+            "text": "And gate\n\n\nTruth table\n\n\n\n\n\n\n\n\na\n\n\nb\n\n\nout\n\n\n\n\n\n\n\n\n\n\n0\n\n\n0\n\n\n1\n\n\n\n\n\n\n1\n\n\n0\n\n\n0\n\n\n\n\n\n\n0\n\n\n1\n\n\n0\n\n\n\n\n\n\n1\n\n\n1\n\n\n0\n\n\n\n\n\n\n\n\nUsage\n\n\n from pyhdl.primitives import NandGate\n\n a = Wire()\n\n b = Wire()\n\n out = Wire()\n\n gate = NandGate(a=a, b=b, out=out)\n\n a.set('1')\n\n b.set('1')\n\n a.get()\n1", 
+            "title": "AND Gate"
+        }, 
+        {
+            "location": "/builtins/and/#and-gate", 
+            "text": "", 
+            "title": "And gate"
+        }, 
+        {
+            "location": "/builtins/and/#truth-table", 
+            "text": "a  b  out      0  0  1    1  0  0    0  1  0    1  1  0", 
+            "title": "Truth table"
+        }, 
+        {
+            "location": "/builtins/and/#usage", 
+            "text": "from pyhdl.primitives import NandGate  a = Wire()  b = Wire()  out = Wire()  gate = NandGate(a=a, b=b, out=out)  a.set('1')  b.set('1')  a.get()\n1", 
+            "title": "Usage"
+        }, 
+        {
+            "location": "/builtins/dff/", 
+            "text": "Nand gate\n\n\nTruth table\n\n\n\n\n\n\n\n\na\n\n\nb\n\n\nout\n\n\n\n\n\n\n\n\n\n\n0\n\n\n0\n\n\n1\n\n\n\n\n\n\n1\n\n\n0\n\n\n0\n\n\n\n\n\n\n0\n\n\n1\n\n\n0\n\n\n\n\n\n\n1\n\n\n1\n\n\n0\n\n\n\n\n\n\n\n\nUsage\n\n\n from pyhdl.primitives import NandGate\n\n a = Wire()\n\n b = Wire()\n\n out = Wire()\n\n gate = NandGate(a=a, b=b, out=out)\n\n a.set('1')\n\n b.set('1')\n\n a.get()\n1", 
+            "title": "D Flip Flop"
+        }, 
+        {
+            "location": "/builtins/dff/#nand-gate", 
+            "text": "", 
+            "title": "Nand gate"
+        }, 
+        {
+            "location": "/builtins/dff/#truth-table", 
+            "text": "a  b  out      0  0  1    1  0  0    0  1  0    1  1  0", 
+            "title": "Truth table"
+        }, 
+        {
+            "location": "/builtins/dff/#usage", 
+            "text": "from pyhdl.primitives import NandGate  a = Wire()  b = Wire()  out = Wire()  gate = NandGate(a=a, b=b, out=out)  a.set('1')  b.set('1')  a.get()\n1", 
+            "title": "Usage"
+        }
+    ]
+}
